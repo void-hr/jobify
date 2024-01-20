@@ -9,10 +9,10 @@
 - [x]  push your code to github with message “boilerplate server setup”
 - [x]  create a health api (role of health api is to check that your server is up and running)
 - [x]  connect database with you local express server(Note: you need to create database on https://www.mongodb.com/atlas/database)
-- [ ]  push your code to github with message “added database config and initialzation”
-- [ ]  understanding the project requirements
+- [x]  push your code to github with message “added database config and initialzation”
+- [x]  understanding the project requirements
 - [ ]  design schema model for database https://www.youtube.com/watch?v=h4A0-53Olm4
-- [ ]  push your code to github with message “added database models”
+- [x]  push your code to github with message “added database models”
 - [ ]  create register route
 - [ ]  check for the fields that are required for register a user
 - [ ]  make sure that no duplicate user should exists based on the email field
