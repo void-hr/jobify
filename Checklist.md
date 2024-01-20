@@ -6,9 +6,9 @@
 - [x]  add gitignore
 - [x]  create a node server
 - [x]  add .env file to add your host, port and database credentials
-- [ ]  push your code to github with message “boilerplate server setup”
-- [ ]  create a health api (role of health api is to check that your server is up and running)
-- [ ]  connect database with you local express server(Note: you need to create database on https://www.mongodb.com/atlas/database)
+- [x]  push your code to github with message “boilerplate server setup”
+- [x]  create a health api (role of health api is to check that your server is up and running)
+- [x]  connect database with you local express server(Note: you need to create database on https://www.mongodb.com/atlas/database)
 - [ ]  push your code to github with message “added database config and initialzation”
 - [ ]  understanding the project requirements
 - [ ]  design schema model for database https://www.youtube.com/watch?v=h4A0-53Olm4
