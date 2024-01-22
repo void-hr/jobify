@@ -4,16 +4,19 @@ const app = express();
 const PORT = process.env.PORT || 3000
 
 const db = require("./config/mongodb")
-
+const authRoutes  = require('./routes/authRoutes')
 app.use(express.json());
+
+
+app.use('/api/v1', authRoutes)
+
 app.get('/', (req, res) => {
+    res.json({"message": "Server is up 🚀"} )
+})
+// health api
+app.get('/health', (req, res) => {
     res.json({"message": "Server is healthy 💪", signal: "🟢", status: 200 ,time:  new Date().toUTCString() } )
 })
-
-app.get('/health', (req, res) => {
-    res.json({"message": "Server is up"} )
-})
-
 
 // connect ot db
 db();

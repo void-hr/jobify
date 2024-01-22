@@ -13,9 +13,9 @@
 - [x]  understanding the project requirements
 - [ ]  design schema model for database https://www.youtube.com/watch?v=h4A0-53Olm4
 - [x]  push your code to github with message “added database models”
-- [ ]  create register route
-- [ ]  check for the fields that are required for register a user
-- [ ]  make sure that no duplicate user should exists based on the email field
+- [x]  create register route
+- [x]  check for the fields that are required for register a user
+- [x]  make sure that no duplicate user should exists based on the email field
 - [ ]  once the user is registered then show a toast user registered successfully
 - [ ]  create login route
 - [ ]  check for user

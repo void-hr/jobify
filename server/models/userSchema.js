@@ -17,7 +17,7 @@ password : {
 contact : {
     type: Number,
     required: true,
-    unique,
+    unique: true,
 }
 
 },
