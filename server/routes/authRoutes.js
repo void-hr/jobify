@@ -15,7 +15,15 @@ router.post("/register", async (req,res) => {
         if(!username || !email || !password || !contact){
             return res.status(400).json({message: "bad request"})
         }
-            const hash= await bcrypt.hash(password, saltRounds);
+        const isExistingUser = await User.findOne({ email: email });
+        if (isExistingUser) {
+            return res.status(409).json({ message: "User already exists" });
+        }
+        const isExistingContact = await User.findOne({ contact: contact });
+        if (isExistingContact) {
+            return res.status(409).json({ message: "Mobile no. already registered" });
+        }
+            const hash = await bcrypt.hash(password, saltRounds);
             const newUser =  await User.create({
                 username : username,
                 email: email,
