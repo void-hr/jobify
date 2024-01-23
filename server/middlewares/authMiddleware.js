@@ -18,7 +18,6 @@ const verifyJwt = (req,res,next) => {
         return res.status(409).json({message: "Authentication failed"})
     }
 
-    next()
 }
 
 module.exports = verifyJwt
