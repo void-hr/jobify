@@ -1,6 +1,9 @@
+import { useNavigate } from 'react-router-dom'
 import styles from './navbar.module.css'
 
 const Navbar = () => {
+    const navigate = useNavigate();
+   
     return (
         <div className={styles.navbar}>
 
@@ -17,8 +20,8 @@ const Navbar = () => {
             <div className={styles.navbar_content}>
                 <h1 className={styles.h1}>Jobfinder</h1>
                 <div className={styles.button_container} >
-                    <button className={styles.button}>Login</button>
-                    <button className={styles.button}>Register</button>
+                    <button className={styles.button} onClick={()=>  navigate('/login')}>Login</button>
+                    <button className={styles.button} onClick={()=>  navigate('/register')}>Register</button>
 
                 </div>
             </div>

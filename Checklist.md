@@ -41,7 +41,7 @@
 ## Checklist-4
 
 - [x]  you need to create a api to show the detail description of job post
-- [ ]  you need to implement register/login page
+- [x]  you need to implement register/login page
 - [ ]  once the user have logged in or registered for the first time(NOTE: while registering for the first time. On successful registration user should be automatically logged in)
 - [ ]  After the login and registration process, store the token returned by the api and name of the logged in user in the localstorage
 
