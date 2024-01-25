@@ -4,10 +4,10 @@ const Register = () => {
     <div className={styles.register}>
         <div className={styles.register_form_container}>
         <div className={styles.register_form}>
-
+            <div>
             <h1>Create an account</h1> 
             <h6>Your personal job finder is here</h6>
-
+            </div>
             <input type="text" name="name" id="" placeholder="Name" />
             <input type="text" name="email" id="" placeholder="Email" />
             <input type="text" name="mobile" id="" placeholder="Mobile" />
