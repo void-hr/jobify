@@ -1,0 +1,16 @@
+
+
+
+.image_wall {
+    height: 100vh;
+    width: 40%;
+    display: flex;
+    justify-content: center;
+    background: url("../../assets/images/create_wall.png");
+    object-position: center;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
