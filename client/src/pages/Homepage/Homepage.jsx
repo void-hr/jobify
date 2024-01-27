@@ -1,4 +1,5 @@
 import FilterCard from "../../components/Filter/FilterCard"
+import { JobCard } from "../../components/JobCard/JobCard"
 import Navbar from "../../components/Navbar/Navbar"
 
 const Homepage = () => {
@@ -11,6 +12,7 @@ const Homepage = () => {
         {/* 2. Search / filter Card */}
 
         {/* 3. Job Card */}
+        <JobCard />
     </div>
   )
 }

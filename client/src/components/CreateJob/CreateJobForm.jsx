@@ -69,6 +69,7 @@ const CreateJobForm = () => {
                 </div>
             </form>
             <div className={styles.image_wall}>
+            <h1 style={{color: 'white'}}>  Recruiter add job details here </h1>
             </div>
         </div>
     )

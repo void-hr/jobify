@@ -11,12 +11,12 @@
 - [x]  connect database with you local express server(Note: you need to create database on https://www.mongodb.com/atlas/database)
 - [x]  push your code to github with message “added database config and initialzation”
 - [x]  understanding the project requirements
-- [ ]  design schema model for database https://www.youtube.com/watch?v=h4A0-53Olm4
+- [x]  design schema model for database https://www.youtube.com/watch?v=h4A0-53Olm4
 - [x]  push your code to github with message “added database models”
 - [x]  create register route
 - [x]  check for the fields that are required for register a user
 - [x]  make sure that no duplicate user should exists based on the email field
-- [ ]  once the user is registered then show a toast user registered successfully
+- [x]  once the user is registered then show a toast user registered successfully
 - [x]  create login route
 - [x]  check for user
 - [x]  return jwt token if the user is successfully login
