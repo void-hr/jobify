@@ -1,5 +1,5 @@
 import FilterCard from "../../components/Filter/FilterCard"
-import { JobCard } from "../../components/JobCard/JobCard"
+import JobCard from "../../components/JobCard/JobCard"
 import Navbar from "../../components/Navbar/Navbar"
 
 const Homepage = () => {

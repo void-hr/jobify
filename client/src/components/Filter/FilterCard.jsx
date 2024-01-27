@@ -11,7 +11,7 @@ const FilterCard = () => {
                 <option value="title">Title</option>
 
             </select>
-            {skills.map((elem)=> (<Chip skill={elem}/>))}
+            {skills.map((elem,idx)=> (<Chip key={idx} skill={elem}/>))}
             </div>
             <button className={styles.clear}>Clear</button>
         </div>
