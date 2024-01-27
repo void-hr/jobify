@@ -32,3 +32,22 @@ input[type="checkbox"] {
   accent-color: black;
 
 }
+
+input{
+  border: 1px solid rgb(209, 209, 209) ;
+  height: 40%;
+  border-radius: 5px;
+  outline: none;
+  color: gray;
+  padding: 0px 12px;
+}
+
+textarea{
+  margin: 0;
+  border: 1px solid rgb(209, 209, 209) ;
+  border-radius: 5px;
+  outline: none;
+  color: gray;
+  padding: 12px ;
+  font-family: sans-serif;
+}
