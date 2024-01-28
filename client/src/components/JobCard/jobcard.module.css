@@ -37,12 +37,12 @@
 
 .job_card_left img {
     border-radius: 5px;
-    object-fit: fill;
+    object-fit: contain;
     background-position: center;
     object-position: center;
     background-repeat: no-repeat;
-    background-size: contain;
-    width: 80px;
+    background-size: cover;
+    width: 50px;
     aspect-ratio: 1;
 }
 .job_info {

@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react'
 import { getAllJobs } from '../../apis/job'
+import { useNavigate  } from 'react-router-dom'
 import styles from './jobcard.module.css'
 
  const JobCard = ({title}) => {
     // const skills = ["html", "css", "js", "react"]
+    const navigate = useNavigate();
     const skills = ''
     const [allJobs, setAllJobs] = useState([]);
 
@@ -24,7 +26,7 @@ import styles from './jobcard.module.css'
 
             <div className={styles.job_card}>
                 <div className={styles.job_card_left} >
-                    <img src="https://images.unsplash.com/photo-1496200186974-4293800e2c20?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"  alt="" />
+                    <img src={elem?.logoUrl} alt="company logo" />
                     <div className={styles.job_card_desc}>
                         <h3 className={styles.title}>
                             {elem.jobPosition}
@@ -42,7 +44,7 @@ import styles from './jobcard.module.css'
 </svg>
                                 
 {elem.monthlySalary}</p>
-                            <p>Delhi</p>
+                            <p>{elem.location}</p>
                         </div>
                         <div className={styles.job_misc}>
                             <p>{elem.mode}</p>
@@ -57,7 +59,9 @@ import styles from './jobcard.module.css'
                       { elem.skills.map((elem,idx )=> ( <Tag key={idx}title={elem}/>) )}
                       </div>
                       <div className={styles.button_container}>
-                        <button>View Details</button>
+                        <button onClick={()=> navigate('/description', {state : {
+                            id: elem._id
+                        }})}>View Details</button>
                         </div>
                     </div>
             </div>
@@ -69,9 +73,14 @@ import styles from './jobcard.module.css'
 
 export default JobCard
 
-export const Tag = ({title}) => {
+export const Tag = ({title, rounded}) => {
 
     return (
-        <div className={styles.tag}>{title}</div>
+        <>{
+        rounded ? 
+        <div className={styles.tag} style={{borderRadius:'1rem'}}>{title}</div> :
+       <div className={styles.tag}>{title}</div>} 
+       </>
+       
     )
 }

@@ -71,9 +71,9 @@ router.put("/edit/:jobId", jwtVerify, async(req,res)=>{
 router.get("/job-description/:jobId", async(req,res)=>{
     try {
         const jobId = req.params.jobId;
-        const jobDescription = await Job.findOne({_id: jobId}, {companyName: 1, jobDescription: 1})
+        const jobDescription = await Job.findOne({_id: jobId})
         
-        res.json({"message" : jobDescription})
+        res.json({"data": jobDescription})
     } catch (error) {
         console.log("some issue with /job-description route", error)
     }
