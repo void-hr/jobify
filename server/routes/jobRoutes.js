@@ -40,7 +40,7 @@ router.get("/all", async(req,res)=>{
         const jobList = await Job.find({
             jobPosition : { $regex : title, $options: "i"},
             ...filter
-        }, { companyName : 1 });
+        });
 
         res.json({data: jobList})
 

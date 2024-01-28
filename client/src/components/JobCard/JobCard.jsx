@@ -1,10 +1,25 @@
+import { useEffect, useState } from 'react'
+import { getAllJobs } from '../../apis/job'
 import styles from './jobcard.module.css'
 
- const JobCard = () => {
-    const skills = ["html", "css", "js", "react"]
+ const JobCard = ({title}) => {
+    // const skills = ["html", "css", "js", "react"]
+    const skills = ''
+    const [allJobs, setAllJobs] = useState([]);
+
+
+    useEffect( ()=> {
+        getJobs();
+    }, [title])
+    const getJobs = async () => {
+        const jobs = await getAllJobs(title, skills);
+        setAllJobs(jobs.data);
+    }
 
     return (
-        <div className={styles.card_container}>
+        <div style={{display:'flex', flexDirection:'column', gap:'1rem'}}>
+
+      { allJobs && allJobs?.map((elem, idx) => ( <div key={elem._id} className={styles.card_container}>
             <div className={styles.red}></div>
 
             <div className={styles.job_card}>
@@ -12,7 +27,7 @@ import styles from './jobcard.module.css'
                     <img src="https://images.unsplash.com/photo-1496200186974-4293800e2c20?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"  alt="" />
                     <div className={styles.job_card_desc}>
                         <h3 className={styles.title}>
-                            Frontend Developer
+                            {elem.jobPosition}
                         </h3>
                         <div className={styles.job_info}>
                             <p>
@@ -26,26 +41,27 @@ import styles from './jobcard.module.css'
 <path d="M7.20035 4.1039C6.73892 3.1316 5.75015 2.45594 4.59658 2.45594H0.888672V0.807983H10.7764V2.45594H8.09025C8.48576 2.93385 8.78239 3.49415 8.95543 4.1039H10.7764V5.75186H9.11198C8.90599 8.059 6.9614 9.87175 4.59658 9.87175H3.99507L9.54045 15.6396H7.25803L1.71265 9.87175V8.22379H4.59658C6.04678 8.22379 7.24979 7.15262 7.44754 5.75186H0.888672V4.1039H7.20035Z" fill="#9C9C9C"/>
 </svg>
                                 
-                                50,000</p>
+{elem.monthlySalary}</p>
                             <p>Delhi</p>
                         </div>
                         <div className={styles.job_misc}>
-                            <p>Office</p>
-                            <p>Fulltime</p>
+                            <p>{elem.mode}</p>
+                            <p>{elem.jobType}</p>
 
                         </div>
                     </div>
                 </div>
 
                     <div className={styles.job_card_right}>
-                        <div style={{display:"flex", gap:"1rem"}}>
-                      { skills.map((elem,idx )=> ( <Tag key={idx}title={elem}/>) )}
+                        <div style={{display:"flex", justifyContent:'end', gap:"1rem"}}>
+                      { elem.skills.map((elem,idx )=> ( <Tag key={idx}title={elem}/>) )}
                       </div>
                       <div className={styles.button_container}>
                         <button>View Details</button>
                         </div>
                     </div>
             </div>
+        </div>) )}
         </div>
     )
 }

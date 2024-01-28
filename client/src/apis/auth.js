@@ -25,7 +25,7 @@ try {
     return {data, statusText}
 
 } catch (error) {
-    console.log("register: ", error.response.data)
+    console.log("login: ", error.response.data)
     toast.error(` ${error.response.data.message}`, {
         position: "bottom-right",
         autoClose: 5000,

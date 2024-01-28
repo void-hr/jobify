@@ -8,6 +8,7 @@
     padding: 2.5rem 2rem;
     position: relative;
     
+    
 
 }
 
@@ -48,7 +49,7 @@
     display: flex;
     gap: 1rem;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
 }
 
 .job_info p{
