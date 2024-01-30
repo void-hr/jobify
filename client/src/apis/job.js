@@ -33,3 +33,20 @@ export const getJobById = async(id) => {
        
     }
     }
+
+    export const editJob = async(id, formData) => {
+        try {
+            const url = `${import.meta.env.VITE_BASE_URL}/edit/${id}`;
+           
+            const response = await axios.put(url,formData);
+           
+            
+            return response.data
+        
+        } catch (error) {
+            console.log("login: ", error.response.data)
+           
+        }
+        }
+    
+    

@@ -1,6 +1,9 @@
 import styles from './createjobform.module.css'
-
+import { useLocation } from 'react-router-dom'
 const CreateJobForm = () => {
+    const { state } = useLocation();
+   
+
     return (
         <div className={styles.create}>
             <form className={styles.create_form_container}>
@@ -11,7 +14,7 @@ const CreateJobForm = () => {
 
                     <span>
                         <label>  Company Name  </label>
-                        <input type="text"  placeholder='Enter your company name here.'/>
+                        <input type="text" placeholder='Enter your company name here.'  />
                     </span>
                     <span>
                         <label>  Add logo</label>
@@ -39,6 +42,11 @@ const CreateJobForm = () => {
                         <option value="remote">Remote</option>
                             <option value="office">Office</option>
                         </select>
+                    </span>
+                    <span>
+                        <label>Duration</label>
+                        <input type="text" placeholder='Enter job duration for example 3 Months' />
+
                     </span>
                     <span>
                         <label>   Location</label>

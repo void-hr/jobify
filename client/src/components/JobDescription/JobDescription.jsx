@@ -3,9 +3,10 @@ import { useLocation } from "react-router-dom"
 import { getJobById } from "../../apis/job";
 import styles from './jobdescription.module.css'
 import { Tag } from "../JobCard/JobCard";
-
+import { useNavigate } from "react-router-dom";
 const JobDescription = () => {
     const { state } = useLocation();
+    const navigate = useNavigate();
     const [ jobDesc, setJobDesc ] = useState();
     useEffect( () => {
         if(!state) return;
@@ -18,6 +19,13 @@ const JobDescription = () => {
         setJobDesc(response?.data);
     }
    
+    const handleEditJob = (e) => {
+        e.preventDefault();
+        navigate('/create', {state: {
+            formData: jobDesc,
+            id: jobDesc?._id
+        }})
+    }
   return (
     <div className={styles.description_container}>
     <div className={styles.title_card}>
@@ -39,7 +47,7 @@ const JobDescription = () => {
         <h3>{jobDesc?.location +' | India' }</h3>
         </div>
         <div>
-            <button>Edit Job</button>
+            <button onClick={handleEditJob}>Edit Job</button>
         </div>
        
      </div>

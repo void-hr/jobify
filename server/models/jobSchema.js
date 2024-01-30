@@ -13,6 +13,9 @@ const jobSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    duration: {
+        type: String,
+    },
     monthlySalary: {
         type: String,
         required: true,
