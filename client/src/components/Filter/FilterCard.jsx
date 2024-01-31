@@ -1,8 +1,11 @@
 import { useState } from 'react'
 import styles from './filtercard.module.css'
+import MultiSelect from '../MultiSelect/MultiSelect';
 const FilterCard = ({setTitle}) => {
 
     const [ userInput, setUserInput  ] = useState('');
+      const [ filterSkill, setFilterSkill ] = useState([]);
+
     const handleTitle = (e) => {
         setUserInput(e.target.value)
         if(e.key === 'Enter'){
@@ -17,12 +20,11 @@ const FilterCard = ({setTitle}) => {
         <input type="text" name='title' onKeyDown={handleTitle}/>
         <div className={styles.filter_keywords}>
             <div className={styles.left_filter}>
-            <select defaultValue={"skills"}>
-                <option value="skills">Skills</option>
-                <option value="title">Title</option>
-
-            </select>
-            {/* {skills.map((elem,idx)=> (<Chip key={idx} skill={elem}/>))} */}
+             <MultiSelect  filterSkill={filterSkill} setFilterSkill={setFilterSkill}/>
+           
+           <div className={styles.chip_container}>
+            {filterSkill && filterSkill.map((elem,idx)=> (<Chip key={idx} skill={elem}/>))}
+            </div>
             </div>
             <button className={styles.clear}>Clear</button>
         </div>

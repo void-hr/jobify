@@ -30,9 +30,15 @@
     align-items: center; 
     justify-content: center;
     gap: 2rem;
+    width: 100%;
     height: 4vh;
 }
+.chip_container{
+    flex: 100%;
+    display: flex;
+    gap: 1rem;
 
+}
 .clear{
     color: #ED5353;
     border: none;
