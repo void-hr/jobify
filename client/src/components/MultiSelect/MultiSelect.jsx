@@ -10,7 +10,6 @@ const MultiSelect = ({filterSkill, setFilterSkill}) => {
 
   }
 
-  console.log(filterSkill)
   return (
     <div>
       <select name="select" className={styles.select} onChange={handleSkill}>

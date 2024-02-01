@@ -1,10 +1,11 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import styles from './filtercard.module.css'
 import MultiSelect from '../MultiSelect/MultiSelect';
 const FilterCard = ({setTitle}) => {
 
     const [ userInput, setUserInput  ] = useState('');
       const [ filterSkill, setFilterSkill ] = useState([]);
+
 
     const handleTitle = (e) => {
         setUserInput(e.target.value)
@@ -23,7 +24,7 @@ const FilterCard = ({setTitle}) => {
              <MultiSelect  filterSkill={filterSkill} setFilterSkill={setFilterSkill}/>
            
            <div className={styles.chip_container}>
-            {filterSkill && filterSkill.map((elem,idx)=> (<Chip key={idx} skill={elem}/>))}
+            {filterSkill && filterSkill.map((elem,idx)=> (<Chip key={idx} filterSkill={filterSkill} setFilterSkill={setFilterSkill} skill={elem}/>))}
             </div>
             </div>
             <button className={styles.clear}>Clear</button>
@@ -35,11 +36,13 @@ const FilterCard = ({setTitle}) => {
 export default FilterCard
 
 
-export const Chip = ({skill}) => {
+export const Chip = ({skill, filterSkill, setFilterSkill}) => {
+
+
     return (
-        <div className={styles.chip}>
+        <div className={styles.chip} id='chip_container' onClick={handleClose}>
             <p>{skill}</p>
-            <div className={styles.chip_x}>X</div>
+            <div className={styles.chip_x} >X</div>
         </div>
     )
 } 

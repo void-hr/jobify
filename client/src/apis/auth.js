@@ -39,3 +39,42 @@ try {
 
 }
 }
+
+
+export const register = async(formData) => {
+    
+try {
+    const url = `${import.meta.env.VITE_BASE_URL}/register`;
+    const reqPayload = formData;
+   
+    const {data, statusText} = await axios.post(url, reqPayload);
+   
+     toast.success(` ${data?.message}`, {
+        position: "bottom-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+    });
+
+    console.log(data)
+    return {data, statusText}
+
+} catch (error) {
+    console.log("login: ", error.response.data)
+    toast.error(` ${error.response.data.message}`, {
+        position: "bottom-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        });
+
+}
+}
