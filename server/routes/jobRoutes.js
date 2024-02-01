@@ -1,5 +1,6 @@
 const express = require('express')
 const router = express.Router();
+const jwt = require("jsonwebtoken");
 const jwtVerify = require("../middlewares/authMiddleware")
 const Job = require('../models/jobSchema')
 
@@ -72,8 +73,16 @@ router.get("/job-description/:jobId", async(req,res)=>{
     try {
         const jobId = req.params.jobId;
         const jobDescription = await Job.findOne({_id: jobId})
-        
-        res.json({"data": jobDescription})
+        const token = req.header('authorization');
+
+        const decodedToken = jwt.verify(token, process.env.TOKEN_SECRET )
+        console.log( decodedToken.userID + " === " + jobDescription.refUserId.toString())
+        if(decodedToken.userID === jobDescription.refUserId.toString()) {
+            res.json({"data": jobDescription, isEditable: true})
+        }else
+        {
+            res.json({"data": jobDescription, isEditable: false})
+        }
     } catch (error) {
         console.log("some issue with /job-description route", error)
     }

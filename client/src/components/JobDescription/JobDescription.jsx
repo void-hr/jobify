@@ -8,18 +8,33 @@ const JobDescription = () => {
     const { state } = useLocation();
     const navigate = useNavigate();
     const [ jobDesc, setJobDesc ] = useState();
-
-  
+    const [ isEditable, setIsEditable] = useState(false);
+     
     useEffect( () => {
         if(!state) return;
-        getJob();
-      
-    }, [])
-
     const getJob = async () => {
-        const response = await getJobById(state.id);
-        setJobDesc(response?.data);
+        
+        try {
+            if(state){
+                const {  data : response } = await getJobById(state.id);
+                debugger
+                if(response?.isEditable) setIsEditable(true);
+
+                
+                else setIsEditable(false);
+                debugger
+                setJobDesc(response.data);
+            }
+        } catch (error) {
+         console.log("something went wrong")   
+        }
+       
     }
+
+    getJob();
+      
+    }, [state, isEditable])
+
    
     const handleEditJob = (e) => {
         e.preventDefault();
@@ -29,6 +44,10 @@ const JobDescription = () => {
         }})
     }
   return (
+
+    <>
+    {!jobDesc ?  <div>Loading</div> :
+    
     <div className={styles.description_container}>
     <div className={styles.title_card}>
        <h1> {jobDesc?.jobPosition +" "+jobDesc?.mode +" / "+ jobDesc?.jobType + " at " + jobDesc?.companyName}</h1>
@@ -48,9 +67,10 @@ const JobDescription = () => {
         <h1>{jobDesc?.jobPosition}</h1>
         <h3>{jobDesc?.location +' | India' }</h3>
         </div>
-      { state?.creatorId && <div>
+        
+      { isEditable ? <div>
             <button onClick={handleEditJob}>Edit Job</button>
-        </div>}
+        </div> : ""}
        
      </div>
      
@@ -103,7 +123,11 @@ const JobDescription = () => {
         </div>
     </div>
     </div>
+      
+            }
+    </>
   )
 }
 
-export default JobDescription
+  
+    export default JobDescription

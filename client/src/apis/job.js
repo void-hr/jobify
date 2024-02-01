@@ -22,11 +22,16 @@ try {
 export const getJobById = async(id) => {
     try {
         const url = `${import.meta.env.VITE_BASE_URL}/job/job-description/${id}`;
-       
-        const response = await axios.get(url);
+        const token = localStorage.getItem('token')
+        const response = await axios.get(url, {
+            headers:  {
+                "Content-type": "application/json; charset=UTF-8",
+                "Authorization": token
+         }
+});
        
         
-        return response.data
+        return response
     
     } catch (error) {
         console.log("login: ", error.response.data)
