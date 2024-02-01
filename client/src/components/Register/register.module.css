@@ -39,6 +39,10 @@
     background-size: cover;
 }
 
+.register_form [type="password"]{
+    width: 70%;
+    height: 7vh;
+}
 
 .image_wall h1 {
     font-size: 2vw;

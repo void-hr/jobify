@@ -8,10 +8,12 @@ const JobDescription = () => {
     const { state } = useLocation();
     const navigate = useNavigate();
     const [ jobDesc, setJobDesc ] = useState();
+
+  
     useEffect( () => {
         if(!state) return;
         getJob();
-        
+      
     }, [])
 
     const getJob = async () => {
@@ -46,9 +48,9 @@ const JobDescription = () => {
         <h1>{jobDesc?.jobPosition}</h1>
         <h3>{jobDesc?.location +' | India' }</h3>
         </div>
-        <div>
+      { state?.creatorId && <div>
             <button onClick={handleEditJob}>Edit Job</button>
-        </div>
+        </div>}
        
      </div>
      

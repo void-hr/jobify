@@ -55,12 +55,14 @@ import styles from './jobcard.module.css'
                 </div>
 
                     <div className={styles.job_card_right}>
-                        <div style={{display:"flex", justifyContent:'end', gap:"1rem"}}>
+                        <div style={{display:"flex", justifyContent:'flex-end', gap:"1rem",  width:'100%', overflowX:"scroll"}}>
                       { elem.skills.map((elem,idx )=> ( <Tag key={idx}title={elem}/>) )}
                       </div>
                       <div className={styles.button_container}>
                         <button onClick={()=> navigate('/description', {state : {
-                            id: elem._id
+                            id: elem._id,
+                            creatorId: elem?.refUserId,
+                            
                         }})}>View Details</button>
                         </div>
                     </div>

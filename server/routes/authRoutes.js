@@ -31,7 +31,7 @@ router.post("/register", async (req,res) => {
                 contact: contact
             })
             const jwtToken = await jwt.sign({userId: newUser._id}, process.env.TOKEN_SECRET)
-            res.json({message: "User created successfully", token : jwtToken})
+            res.json({message: "User created successfully", token : jwtToken, name: newUser?.username})
         
         
     } catch (error) {
@@ -56,7 +56,7 @@ router.post("/login", async (req,res) => {
 
         
         const jwtToken = jwt.sign( {userID: userDetails._id}, process.env.TOKEN_SECRET)
-        res.json({message: "User logged in Successfully", token:  jwtToken})
+        res.json({message: "User logged in Successfully", token:  jwtToken, name: userDetails?.username})
         
     } catch (error) {
         console.log("error occured in login route "+ error)

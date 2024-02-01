@@ -8,10 +8,13 @@ const Register = () => {
   const navigate = useNavigate();
     const response = async() => {
        const response =  await register(formData)
-        if(response.data.token)
+        if(response.data.token && response.data.name)
         {
+          localStorage.setItem('token', response?.data?.token)
+          localStorage.setItem('user', response?.data?.name)
           navigate('/');
         }
+
     }
     
     const handleSignUp =  (e) => {

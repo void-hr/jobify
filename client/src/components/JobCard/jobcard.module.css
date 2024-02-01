@@ -90,8 +90,12 @@
     width: 100%;
     display: flex;
     justify-content: end;
+
 }
 
+.button_container button {
+    cursor: pointer;
+}
 .job_card_right button{
    background-color:  #ED5353;
 color: white;

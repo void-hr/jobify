@@ -7,6 +7,7 @@ import { ToastContainer } from 'react-toastify'
 import CreateJob from './pages/CreateJob/CreateJob'
 import JobDescriptionPage from './pages/JobDescriptionPage/JobDescriptionPage'
 
+
 function App() {
 
   return (
@@ -15,12 +16,14 @@ function App() {
          <ToastContainer />
     <Routes>
 
-      <Route path="/" element={<Homepage />}/ >
       <Route path="/login" element={<LoginPage />}/ >
       <Route path="/register" element={<RegisterPage />}/ >
 
       <Route path="/create" element={<CreateJob />}/ >
-      <Route path="/description" element={<JobDescriptionPage/>}/ >
+        
+      <Route path="/" element={<Homepage />}/ >
+      <Route path="/description" element={<JobDescriptionPage />}/ >
+
 
      
     </Routes>
