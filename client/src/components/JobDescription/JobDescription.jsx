@@ -17,12 +17,8 @@ const JobDescription = () => {
         try {
             if(state){
                 const {  data : response } = await getJobById(state.id);
-                debugger
-                if(response?.isEditable) setIsEditable(true);
+                if(response?.isEditable) setIsEditable(response?.isEditable);
 
-                
-                else setIsEditable(false);
-                debugger
                 setJobDesc(response.data);
             }
         } catch (error) {

@@ -90,8 +90,10 @@
     width: 100%;
     display: flex;
     justify-content: end;
+    gap: 1rem;
 
 }
+
 
 .button_container button {
     cursor: pointer;

@@ -3,7 +3,6 @@ import { useLocation } from 'react-router-dom'
 const CreateJobForm = () => {
     const { state } = useLocation();
    
-
     return (
         <div className={styles.create}>
             <form className={styles.create_form_container}>

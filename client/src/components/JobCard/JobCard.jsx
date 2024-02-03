@@ -8,6 +8,8 @@ import styles from './jobcard.module.css'
     const navigate = useNavigate();
     const skills = ''
     const [allJobs, setAllJobs] = useState([]);
+    const [isEditable, setIsEditable] = useState(false);
+
 
 
     useEffect( ()=> {
@@ -15,8 +17,9 @@ import styles from './jobcard.module.css'
     }, [title])
     const getJobs = async () => {
         const jobs = await getAllJobs(title, skills);
-        setAllJobs(jobs.data);
+        setAllJobs(jobs.data.data);
     }
+    
 
     return (
         <div style={{display:'flex', flexDirection:'column', gap:'1rem'}}>
@@ -59,6 +62,11 @@ import styles from './jobcard.module.css'
                       { elem.skills.map((elem,idx )=> ( <Tag key={idx}title={elem}/>) )}
                       </div>
                       <div className={styles.button_container}>
+                     { elem.isEditable ?  <button onClick={()=> navigate('/create', {state : {
+                            id: elem._id,
+                            creatorId: elem?.refUserId,
+                            
+                        }})}> Edit Details</button> : " "}
                         <button onClick={()=> navigate('/description', {state : {
                             id: elem._id,
                             creatorId: elem?.refUserId,
