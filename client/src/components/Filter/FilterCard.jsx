@@ -38,7 +38,8 @@ export default FilterCard
 
 export const Chip = ({skill, filterSkill, setFilterSkill}) => {
 
-
+const handleClose = () => {
+}
     return (
         <div className={styles.chip} id='chip_container' onClick={handleClose}>
             <p>{skill}</p>

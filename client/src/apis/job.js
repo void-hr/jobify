@@ -15,10 +15,15 @@ try {
         }}
         const response = await axios.get(url,header);
         return response
+
+
+    }else {
+        const response = await axios.get(url);
+        return response
     }
    
 } catch (error) {
-    console.log("login: ", error.response.data)
+    console.log("login: ", error.response)
    
 }
 }

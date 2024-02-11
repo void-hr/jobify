@@ -34,8 +34,7 @@ router.get("/all", async(req,res)=>{
 
         const token = req.header('authorization');
 
-        const decodedToken = jwt.verify(token, process.env.TOKEN_SECRET )
-
+      
 
         // c++ ignoring ++  
         if(skillArr){
@@ -49,12 +48,20 @@ router.get("/all", async(req,res)=>{
         });
 
        
-const updatedJobList = jobList.map(job => {
-    const isEditable = decodedToken.userID === job.refUserId.toString();
-    return { ...job.toObject(), isEditable }; // Create a new object with the updated isEditable property
-});
 
-res.json({ data: updatedJobList });
+        if(token){
+            const decodedToken = jwt.verify(token, process.env.TOKEN_SECRET )
+            const updatedJobList = jobList.map(job => {
+                const isEditable = decodedToken.userID === job.refUserId.toString();
+                return { ...job.toObject(), isEditable }; // Create a new object with the updated isEditable property
+            });
+            res.json({ data: updatedJobList });
+        }
+        else {
+            res.json({ data: jobList });
+        }
+
+
     } catch (error) {
         console.log("some issue with /all route: -> ", error.message)
     }
