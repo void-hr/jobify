@@ -3,9 +3,9 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 
-export const getAllJobs = async(title,skills ) => {
+export const getAllJobs = async(title,filterSkill ) => {
 try {
-    const url = `${import.meta.env.VITE_BASE_URL}/job/all?${title ? 'title='+title : ''}${skills ? '&skills='+skills : ''}`;
+    const url = `${import.meta.env.VITE_BASE_URL}/job/all?${title ? 'title='+title : ''}${filterSkill.length > 0 ? '&skills='+filterSkill : ''}`;
     const token = localStorage.getItem('token')
 
     if(token) {

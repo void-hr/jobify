@@ -3,10 +3,9 @@ import { getAllJobs } from '../../apis/job'
 import { useNavigate  } from 'react-router-dom'
 import styles from './jobcard.module.css'
 
- const JobCard = ({title}) => {
+ const JobCard = ({title, filterSkill}) => {
     // const skills = ["html", "css", "js", "react"]
     const navigate = useNavigate();
-    const skills = ''
     const [allJobs, setAllJobs] = useState([]);
     const [isEditable, setIsEditable] = useState(false);
 
@@ -14,10 +13,10 @@ import styles from './jobcard.module.css'
 
     useEffect( ()=> {
         getJobs();
-    }, [title])
+    }, [title, filterSkill])
     const getJobs = async () => {
 
-        const jobs = await getAllJobs(title, skills);
+        const jobs = await getAllJobs(title, filterSkill);
 
         // improve this flatten object
         setAllJobs(jobs.data?.data);
@@ -27,7 +26,7 @@ import styles from './jobcard.module.css'
     return (
         <div style={{display:'flex', flexDirection:'column', gap:'1rem'}}>
 
-      { allJobs && allJobs?.map((elem, idx) => ( <div key={elem._id} className={styles.card_container}>
+      { allJobs?.length > 0 ? allJobs?.map((elem, idx) => ( <div key={elem._id} className={styles.card_container}>
             <div className={styles.red}></div>
 
             <div className={styles.job_card}>
@@ -78,7 +77,12 @@ import styles from './jobcard.module.css'
                         </div>
                     </div>
             </div>
-        </div>) )}
+        </div>) ) : (
+            // add no data found component 
+            <div className={styles.not_found}>
+                No Job Found
+                </div>
+        )} 
         </div>
     )
 }

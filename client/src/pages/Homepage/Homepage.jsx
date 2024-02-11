@@ -5,7 +5,7 @@ import Navbar from "../../components/Navbar/Navbar"
 
 const Homepage = ({user}) => {
   const [ title, setTitle] = useState('');
-
+  const [ filterSkill, setFilterSkill ] = useState([]);
   
   
   return (
@@ -13,11 +13,11 @@ const Homepage = ({user}) => {
         {/* list of component */}
         {/* 1. Navbar */}
      <Navbar  />
-     <FilterCard setTitle={setTitle} title={title}/> 
+     <FilterCard setTitle={setTitle} title={title} setFilterSkill={setFilterSkill} filterSkill={filterSkill}/> 
         {/* 2. Search / filter Card */}
 
         {/* 3. Job Card */}
-        <JobCard title={title} setTitle={setTitle}  />
+        <JobCard title={title} setTitle={setTitle}  filterSkill={filterSkill} />
     </div>
   )
 }

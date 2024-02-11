@@ -107,3 +107,8 @@ font-weight: bold;
 border-radius: 5px;
 
 }
+
+.not_found {
+    color: #ED5353;
+    font-size: x-large;
+}

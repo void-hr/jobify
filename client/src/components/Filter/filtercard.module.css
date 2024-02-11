@@ -85,4 +85,5 @@ overflow: hidden;
     justify-content: center;
     color: white;
     padding: 0px 15px;
+    cursor: pointer;
 }
