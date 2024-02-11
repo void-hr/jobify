@@ -16,8 +16,11 @@ import styles from './jobcard.module.css'
         getJobs();
     }, [title])
     const getJobs = async () => {
+
         const jobs = await getAllJobs(title, skills);
-        setAllJobs(jobs.data.data);
+
+        // improve this flatten object
+        setAllJobs(jobs.data?.data);
     }
     
 
@@ -58,7 +61,7 @@ import styles from './jobcard.module.css'
                 </div>
 
                     <div className={styles.job_card_right}>
-                        <div style={{display:"flex", justifyContent:'flex-end', gap:"1rem",  width:'100%', overflowX:"scroll"}}>
+                        <div style={{display:"flex", justifyContent:'flex-end', gap:"1rem",  width:'100%'}}>
                       { elem.skills.map((elem,idx )=> ( <Tag key={idx}title={elem}/>) )}
                       </div>
                       <div className={styles.button_container}>

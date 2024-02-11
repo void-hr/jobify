@@ -13,6 +13,12 @@ const Navbar = () => {
         setUser(localStorage.getItem('user'))
       }
     }, [])
+
+    const handleLogut = () => {
+        localStorage.clear()
+        navigate('/login')
+        
+    }
    
     return (
         <div className={styles.navbar}>
@@ -36,7 +42,7 @@ const Navbar = () => {
                 </div> :
 
                     <div className={styles.button_container} >
-                    <a className={styles.logout} onClick={()=>  navigate('/login')}>Logout</a>
+                    <a className={styles.logout} onClick={handleLogut}>Logout</a>
                     <a className={styles.user} onClick={()=>  navigate('/login')}>Hello! Recruiter</a>
                     <img src={ProfileImage} alt="image" />
                 </div>
