@@ -20,7 +20,7 @@ One stop for searching job
        npm i
 3. Run client
 
-       npm run serve
+       npm run dev
 
 ### Setup backend
 
@@ -33,7 +33,7 @@ One stop for searching job
        npm i
 3. Run client
 
-       npm run serve
+       npm run dev
 
 
 
