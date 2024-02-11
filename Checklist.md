@@ -42,16 +42,16 @@
 
 - [x]  you need to create a api to show the detail description of job post
 - [x]  you need to implement register/login page
-- [ ]  once the user have logged in or registered for the first time(NOTE: while registering for the first time. On successful registration user should be automatically logged in)
-- [ ]  After the login and registration process, store the token returned by the api and name of the logged in user in the localstorage
+- [x]  once the user have logged in or registered for the first time(NOTE: while registering for the first time. On successful registration user should be automatically logged in)
+- [x]  After the login and registration process, store the token returned by the api and name of the logged in user in the localstorage
 
 ## Checklist-5
 
-- [ ]  you need to implement add job description page
-- [ ]  you need to implement view job description page
-- [ ]  you need to implement view job description page with edit button
+- [x]  you need to implement add job description page
+- [x]  you need to implement view job description page
+- [x]  you need to implement view job description page with edit button
 
 ## Checklist-6
 
-- [ ]  you need to implement home page to list all the jobs
+- [x]  you need to implement home page to list all the jobs
 - [ ]  you need to implement filters on the home page
