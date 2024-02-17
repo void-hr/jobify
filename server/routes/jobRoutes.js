@@ -70,7 +70,6 @@ router.get("/all", async(req,res)=>{
 
 router.put("/edit/:jobId", jwtVerify, async(req,res)=>{
     try {
-
         const jobId = req.params.jobId;
         const updatedJob = await Job.updateOne({
             _id: jobId,
@@ -78,10 +77,12 @@ router.put("/edit/:jobId", jwtVerify, async(req,res)=>{
             ...req.body
         },
        } )
+       console.log(updatedJob)
        res.json({"message": "Updated field successfully"})
         
     } catch (error) {
-        console.log("some issue with /edit route", error)
+        res.status(500).json({ "error": "Some issue with /edit route", "details": error.message });
+
     }
 })
 
@@ -91,13 +92,16 @@ router.get("/job-description/:jobId", async(req,res)=>{
         const jobId = req.params.jobId;
         const jobDescription = await Job.findOne({_id: jobId})
         const token = req.header('authorization');
-
+        if(token){
         const decodedToken = jwt.verify(token, process.env.TOKEN_SECRET )
-        if(decodedToken.userID === jobDescription.refUserId.toString()) {
-            res.json({"data": jobDescription, isEditable: true})
-        }else
+        if( decodedToken.userID === jobDescription.refUserId.toString()) {
+            return res.json({"data": jobDescription, isEditable: true})
+        }
+        return res.json({"data": jobDescription, isEditable: false})
+
+    }else
         {
-            res.json({"data": jobDescription, isEditable: false})
+            return res.json({"data": jobDescription, isEditable: false})
         }
     } catch (error) {
         console.log("some issue with /job-description route", error)

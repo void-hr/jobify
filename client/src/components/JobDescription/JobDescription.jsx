@@ -18,7 +18,6 @@ const JobDescription = () => {
             if(state){
                 const {  data : response } = await getJobById(state.id);
                 if(response?.isEditable) setIsEditable(response?.isEditable);
-
                 setJobDesc(response.data);
             }
         } catch (error) {
@@ -28,8 +27,7 @@ const JobDescription = () => {
     }
 
     getJob();
-      
-    }, [state, isEditable])
+}, [state, isEditable])
 
    
     const handleEditJob = (e) => {

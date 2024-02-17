@@ -67,6 +67,7 @@ import styles from './jobcard.module.css'
                      { elem.isEditable ?  <button onClick={()=> navigate('/create', {state : {
                             id: elem._id,
                             creatorId: elem?.refUserId,
+                            formData: allJobs?.filter((jobs) => jobs?._id === elem._id)[0]
                             
                         }})}> Edit Details</button> : " "}
                         <button onClick={()=> navigate('/description', {state : {

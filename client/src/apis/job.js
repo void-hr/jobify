@@ -33,7 +33,7 @@ export const getJobById = async(id) => {
     try {
         const url = `${import.meta.env.VITE_BASE_URL}/job/job-description/${id}`;
         const token = localStorage.getItem('token')
-        if(token) {
+        if(token ) {
             const header = { headers : {
                 "Content-type": "application/json; charset=UTF-8",
                 "Authorization": token
@@ -41,7 +41,9 @@ export const getJobById = async(id) => {
             const response = await axios.get(url,header);
             return response
         }
-       
+
+            const response = await axios.get(url);
+            return response
     
     } catch (error) {
         console.log("login: ", error.response.data)
@@ -49,17 +51,25 @@ export const getJobById = async(id) => {
     }
     }
 
-    export const editJob = async(id, formData) => {
+    export const editJob = async(formData) => {
+        console.log(JSON.stringify({"thelo":formData}, null,2))
         try {
-            const url = `${import.meta.env.VITE_BASE_URL}/edit/${id}`;
+            const token = localStorage.getItem('token')
+            const url = `${import.meta.env.VITE_BASE_URL}/edit/${formData?._id}`;
            
-            const response = await axios.put(url,formData);
+            if(token ) {
+                const headers = {
+                    "Content-type": "application/json; charset=UTF-8",
+                    "Authorization": token
+                }
+                const response = await axios.put(url,formData, {headers});
+                return response.data
+            }
            
             
-            return response.data
         
         } catch (error) {
-            console.log("login: ", error.response.data)
+            console.log("Something went wrong", error.message)
            
         }
         }
