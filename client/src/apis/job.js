@@ -52,21 +52,29 @@ export const getJobById = async(id) => {
     }
 
     export const editJob = async(formData) => {
-        console.log(JSON.stringify({"thelo":formData}, null,2))
         try {
             const token = localStorage.getItem('token')
-            const url = `${import.meta.env.VITE_BASE_URL}/edit/${formData?._id}`;
+            const url = `${import.meta.env.VITE_BASE_URL}/job/edit/${formData?._id}`;
            
-            if(token ) {
+            if(token) {
                 const headers = {
                     "Content-type": "application/json; charset=UTF-8",
                     "Authorization": token
                 }
                 const response = await axios.put(url,formData, {headers});
+                toast.success(` ${response?.data?.message}`, {
+                    position: "bottom-right",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                });
                 return response.data
             }
            
-            
         
         } catch (error) {
             console.log("Something went wrong", error.message)

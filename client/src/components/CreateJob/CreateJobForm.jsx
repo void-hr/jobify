@@ -15,21 +15,30 @@ const CreateJobForm = () => {
         location: state?.formData?.location,
         jobDescription: state?.formData?.jobDescription,
         aboutCompany: state?.formData?.aboutCompany,
-        skills: [...state?.formData?.skills],
+        skills: [state?.formData?.skills],
         information: state?.formData?.information,
         logoUrl: state?.formData?.logoUrl,
+        refUserId: state?.formData?.refUserId,
         duration: state?.formData?.duration,
        });
     
     const handleFormData = (e) => {
-        setFormData((prev) => ({...prev, [e.target.name]: e.target.value}))
+        if(e.target.name === "skills") {
+            
+            const skills = e.target.value.split(',')
+            console.log(skills)
+        setFormData((prev) => ({...prev, "skills": [...skills]}))
+            
+        }else{
+            setFormData((prev) => ({...prev, [e.target.name]: e.target.value}))
+        }
     }
 
 
     const handleJobData = async() => {
         try {
-            const response = await editJob({...formData})
-            return response
+            const response = await editJob(formData)
+            navigate('/')
         } catch (error) {
             console.error("Something went wrong")
         }
