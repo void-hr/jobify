@@ -71,13 +71,14 @@ router.get("/all", async(req,res)=>{
 router.put("/edit/:jobId", jwtVerify, async(req,res)=>{
     try {
         const jobId = req.params.jobId;
+        const { userID, refUserId, _id, ...updates } = req.body;
         const updatedJob = await Job.updateOne({
             _id: jobId,
-        },{ $set : {
-            ...req.body
-        },
-       } )
-       console.log(updatedJob)
+            refUserId: userID,
+        },{ $set : updates } )
+       if (updatedJob.matchedCount === 0) {
+           return res.status(404).json({ "message": "Job not found" })
+       }
        res.json({"message": "Updated field successfully"})
         
     } catch (error) {
@@ -108,16 +109,15 @@ router.get("/job-description/:jobId", async(req,res)=>{
     }
 })
 
-router.delete("/:jobId",  async(req, res) => {
+router.delete("/:jobId", jwtVerify, async(req, res) => {
     try {
-        const jobId = req.params.jobId;
-        const deletedJob = await Job.deleteOne({_id : jobId}).then((result)=> {
-            res.json({"message" : result})
-        }).catch((error) => {
-            res.json({[error.name] : error.message})
-        })
+        const result = await Job.deleteOne({ _id: req.params.jobId, refUserId: req.body.userID })
+        if (result.deletedCount === 0) {
+            return res.status(404).json({ "message": "Job not found" })
+        }
+        res.json({ "message": "Job deleted successfully" })
     } catch (error) {
-        console.log("some issue with /job route", error)
+        res.status(500).json({ "error": "Some issue with /job route", "details": error.message });
     }
 })
 
